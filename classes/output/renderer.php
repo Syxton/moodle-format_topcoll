@@ -432,6 +432,22 @@ class renderer extends section_renderer {
         return $o;
     }
 
+    protected function section_summary_collapsed($section, $course) {
+        $o = '';
+        if ($this->tcsettings['showsectionsummary'] == 2) {
+            $summarytext = $this->format_summary_text($section); // get summary text
+            $summaryactivities = $this->section_activity_summary($section, $course, null); // get section activity summary
+            if (strlen(format_string($summarytext . $summaryactivities))) { // if section is not empty.
+                $excerpt = html_writer::tag('div', $summarytext, array('class' => 'excerpt')); // summary text div
+                $excerpt .= html_writer::tag('div', $summaryactivities, array('class' => 'excerpt_activities')); // activities div
+                $excerpt .= html_writer::tag('div', "Show More", array("class" => "excerpt_show")); // extra show more div
+                $excerpt = preg_replace('/<iframe.*?\/iframe>/i','', $excerpt); // disable iframes in summary when closed.
+                $o = html_writer::tag('div', $excerpt, array('class' => 'excerptarea'));
+            }
+        }
+        return $o;
+    }
+
     /**
      * Generate the section.
      *
@@ -506,6 +522,7 @@ class renderer extends section_renderer {
             $sectioncontext['heading'] = $this->section_heading($section, $title, 'sectionname');
             $sectioncontext['sectionsummary'] = $this->section_summary_container($section);
             $sectioncontext['sectionsummarywhencollapsed'] = ($this->tcsettings['showsectionsummary'] == 2);
+            $sectioncontext['sectionsummaryclosed'] = $this->section_summary_collapsed($section, $course);
 
             if ($this->userisediting) {
                 // CONTRIB-7434.
@@ -693,7 +710,7 @@ class renderer extends section_renderer {
             }
         }
 
-        $title = $this->section_title_without_link($section, $course);
+        $title = $this->section_title_without_link($section, $course) . " (" . get_string('notavailable') . ")";
         if ((($this->mobiletheme === false) && ($this->tablettheme === false)) || ($this->userisediting)) {
             $sectionhiddencontext['nomtore'] = true;
             $sectionhiddencontext['rtl'] = $this->rtl;
