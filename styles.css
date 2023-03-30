@@ -1033,3 +1033,72 @@ body.jsenabled #toggle-all {
         page-break-before: avoid;
     }
 }
+
+.excerptarea {
+    display: none;
+    vertical-align: top;
+}
+
+.toggle_open + div {
+    display: none;
+}
+
+.toggle_closed + div {
+    display: block;
+    background: rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0.5);
+    padding: 5px 30px;
+}
+
+.activity-count {
+    margin-left: 10px;
+    display: inline-block;
+    word-break: break-word;
+}
+
+.summary {
+    margin-top: 10px;
+}
+
+.section-modchooser {
+    padding-bottom: 15px;
+}
+
+.excerpt {
+    width: 70%;
+    max-height: 100px;
+    display:inline-block;
+    vertical-align:top;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+.excerpt_show {
+    border-top: 1px solid rgb(255, 255, 255);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    font-size: .75em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.excerpt_activities {
+    width: 30%;
+    display:inline-block;
+    vertical-align:top;
+}
+
+span.the_toggle {
+    min-height: 24px;
+}
+
+.excerptarea span {
+    display: inline !important;
+    color: initial !important;
+}
+
+.ctopics li.section {
+    border: none !important;
+    margin-bottom:  10px !important;
+}
