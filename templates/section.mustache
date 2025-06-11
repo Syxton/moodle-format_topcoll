@@ -108,6 +108,7 @@
                      }}{{{heading}}}{{!
                     }}{{#tif}}{{^tifpleft}}{{{tif}}}{{/tifpleft}}{{/tif}}{{!
                  }}</span>
+                {{{sectionsummaryclosed}}}
             </div>
             {{#usereditingtitle}}<span class="hidden" aria-hidden="true">{{usereditingtitle}}</span>{{/usereditingtitle}}
             {{#usereditingurl}}<a href="{{{usereditingurl}}}" title="{{#str}}editsection, format_topcoll{{/str}}">{{{usereditingicon}}}</a>{{/usereditingurl}}{{!
@@ -119,16 +120,11 @@
             </div>
             {{/sectionvisibility}}
             {{{sectionavailability}}}
-            {{#sectionsummarywhencollapsed}}
-            {{{sectionsummary}}}
-            {{/sectionsummarywhencollapsed}}
             {{#editing}}
             </div>
             {{/editing}}
             <div id="toggledsection-{{sectionno}}" class="sectionbody toggledsection{{#toggleopen}} sectionopen{{/toggleopen}}">
-                {{^sectionsummarywhencollapsed}}
                 {{{sectionsummary}}}
-                {{/sectionsummarywhencollapsed}}
                 {{{cscml}}}
             </div>
             {{/sectionpage}}

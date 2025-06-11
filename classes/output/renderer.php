@@ -472,6 +472,39 @@ class renderer extends section_renderer {
     }
 
     /**
+     * Generate section summary container.
+     *
+     * @param stdClass $section The course_section entry from DB.
+     * @param stdClass $course The course entry from DB.
+     *
+     * @return string HTML to output.
+     */
+    protected function section_summary_collapsed($section, $course) {
+        $o = '';
+        if ($this->tcsettings['showsectionsummary'] == 2) {
+            // Get summary text.
+            $summarytext = $this->format_summary_text($section);
+
+            // Get section activity summary.
+            $summaryactivities = $this->section_activity_summary($section, $course, null);
+
+            if (strlen(format_string($summarytext . $summaryactivities))) { // if section is not empty.
+                // Summary text div.
+                $excerpt = html_writer::tag('div', $summarytext, ['class' => 'excerpt']);
+                // Activities div.
+                $excerpt .= html_writer::tag('div', $summaryactivities, ['class' => 'excerpt_activities']);
+                // Extra show more div.
+                $excerpt .= html_writer::tag('div', "Show More", ["class" => "excerpt_show"]);
+                // Disable iframes in summary when closed.
+                $excerpt = preg_replace('/<iframe.*?\/iframe>/i', '', $excerpt);
+                // Excerptarea div.
+                $o = html_writer::tag('div', $excerpt, ['class' => 'excerptarea']);
+            }
+        }
+        return $o;
+    }
+
+    /**
      * Generate the section.
      *
      * @param section_info $section The section.
@@ -548,6 +581,7 @@ class renderer extends section_renderer {
             $sectioncontext['heading'] = $this->section_heading($section, $title, 'sectionname');
             $sectioncontext['sectionsummary'] = $this->section_summary_container($section);
             $sectioncontext['sectionsummarywhencollapsed'] = ($this->tcsettings['showsectionsummary'] == 2);
+            $sectioncontext['sectionsummaryclosed'] = $this->section_summary_collapsed($section, $course);
 
             if ($this->userisediting) {
                 // CONTRIB-7434.
@@ -743,7 +777,7 @@ class renderer extends section_renderer {
             }
         }
 
-        $title = $this->section_title_without_link($section, $course);
+        $title = $this->section_title_without_link($section, $course) . " (" . get_string('notavailable') . ")";
         if ((($this->mobiletheme === false) && ($this->tablettheme === false)) || ($this->userisediting)) {
             $sectionhiddencontext['nomtore'] = true;
             $sectionhiddencontext['rtl'] = $this->rtl;
