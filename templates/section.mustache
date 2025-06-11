@@ -108,41 +108,36 @@
                      }}{{{heading}}}{{!
                     }}{{#tif}}{{^tifpleft}}{{{tif}}}{{/tifpleft}}{{/tif}}{{!
                  }}</span>{{!
+                }}{{{sectionsummaryclosed}}}{{!
             }}</div>{{!
             }}{{#usereditingtitle}}<span class="hidden" aria-hidden="true">{{usereditingtitle}}</span>{{/usereditingtitle}}{{!
             }}{{#usereditingurl}}<a href="{{{usereditingurl}}}" title="{{#str}}editsection, format_topcoll{{/str}}">{{{usereditingicon}}}</a>{{/usereditingurl}}{{!
-            }}{{#editing}}{{!
-            }}</div>{{!
-            }}{{/editing}}{{!
             }}{{#sectionvisibility}}{{!
             }}<div data-region="sectionbadges" class="sectionbadges d-inline-block align-items-center">{{!
-            }}{{$ core_courseformat/local/content/section/badges }}{{!
-                }}{{> core_courseformat/local/content/section/badges }}{{!
-            }}{{/ core_courseformat/local/content/section/badges }}{{!
+                }}{{$ core_courseformat/local/content/section/badges }}{{!
+                    }}{{> core_courseformat/local/content/section/badges }}{{!
+                }}{{/ core_courseformat/local/content/section/badges }}{{!
             }}</div>{{!
             }}{{/sectionvisibility}}{{!
             }}{{{sectionavailability}}}{{!
-            }}{{#sectionsummarywhencollapsed}}{{!
-            }}{{{sectionsummary}}}{{!
-            }}{{/sectionsummarywhencollapsed}}{{!
-
+            }}{{#editing}}{{!
+            }}</div>{{!
+            }}{{/editing}}{{!
             }}<div id="toggledsection-{{sectionno}}" class="sectionbody toggledsection{{#toggleopen}} sectionopen{{/toggleopen}}">{{!
-            }}{{^sectionsummarywhencollapsed}}{{!
-            }}{{{sectionsummary}}}{{!
-            }}{{/sectionsummarywhencollapsed}}{{!
-            }}{{{cscml}}}{{!
+                }}{{{sectionsummary}}}{{!
+                }}{{{cscml}}}{{!
             }}</div>{{!
-            }}{{/sectionpage}}
-            {{#sectionpage}}{{!
-            }}{{{heading}}}{{!
-            }}{{{sectionavailability}}}{{!
-            }}<div class="summary">{{!
-            }}{{{summary}}}{{!
-            }}{{#usereditingurl}}<a href="{{{usereditingurl}}}" title="{{#str}}editsection, format_topcoll{{/str}}">{{{usereditingicon}}}</a>{{/usereditingurl}}{{!
-            }}</div>{{!
-            }}{{{cscml}}}{{!
             }}{{/sectionpage}}{{!
-            }}</div>{{!
+            }}{{#sectionpage}}{{!
+                }}{{{heading}}}{{!
+                }}{{{sectionavailability}}}{{!
+                }}<div class="summary">{{!
+                    }}{{{summary}}}{{!
+                    }}{{#usereditingurl}}<a href="{{{usereditingurl}}}" title="{{#str}}editsection, format_topcoll{{/str}}">{{{usereditingicon}}}</a>{{/usereditingurl}}{{!
+                }}</div>{{!
+                }}{{{cscml}}}{{!
+            }}{{/sectionpage}}{{!
+        }}</div>{{!
     }}{{#nomtore}}{{!
         }}{{^rtl}}{{!
         }}{{{rightcontent}}}{{!

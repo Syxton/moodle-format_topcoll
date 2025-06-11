@@ -313,7 +313,7 @@ final class courseformatrenderer_test extends \advanced_testcase {
         $sectionhiddencontext = [
             'columnclass' => 'col-sm-12',
             'heading' => '<h3 data-for="section_title" data-id="' . $section->id . '" data-number="1" id="sectionid-' .
-                $section->id . '-title" class="section-title">Section 1</h3>',
+                $section->id . '-title" class="section-title">Section 1 (Not available)</h3>',
             'leftcontent' => '<div class="left side"><span class="cps_centre">1</span></div>',
             'nomtore' => true,
             'rightcontent' => '<div class="right side"><span class="cps_centre">Topic<br />1</span></div>',
