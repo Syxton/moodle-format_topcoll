@@ -384,7 +384,7 @@ export default class TopcollComponent extends Component {
         }
 
         const target = toggle.querySelector('.the_toggle');
-        const targetSection = toggle.parentElement.querySelector(this.selectors.TOGGLED_SECTION);
+        const targetSection = toggle.closest(this.selectors.SECTION).querySelector(this.selectors.TOGGLED_SECTION);
         var state;
         if (target.classList.contains('toggle_closed')) {
             target.classList.add('toggle_open');
